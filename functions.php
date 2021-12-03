@@ -2,7 +2,7 @@
 /*
 Plugin Name: MECO Addons
 Description: Fügt einig erweiterungen zur Bridge hinzu.
-Version: 0.0.1
+Version: 0.0.2
 Author: Marcel Kaiser
 Author URI: https://www.meco.de/
 */
@@ -16,10 +16,10 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'MECOAddons'
 );
 
-//Set the branch that contains the stable release.
+// Set the branch that contains the stable release.
 $myUpdateChecker->setBranch('stable-branch-name');
 
-//Optional: If you're using a private repository, specify the access token like this:
+// Optional: If you're using a private repository, specify the access token like this:
 // $myUpdateChecker->setAuthentication('your-token-here');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,3 +34,5 @@ function meco_addons_styles()
 add_action( 'wp_enqueue_scripts', 'meco_addons_styles' );
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+include_once('inc/site-box.inc.php');
