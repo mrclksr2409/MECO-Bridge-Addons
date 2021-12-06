@@ -17,19 +17,19 @@ function create_mecositebox_shortcode($atts) {
 	$bild = $atts['bild'];
 	$titel = $atts['titel'];
 	$beschreibung = $atts['beschreibung'];
-	$link = $atts['link'];
+	$link = vc_build_link($atts['link']);
 
 
 	// Output Code
 ?>
-	<div class="ahksdfasdkf wpb_column vc_column_container vc_col-sm-12 vc_col-has-fill">
+<div class="meco_site_box wpb_column vc_column_container vc_col-sm-6 vc_col-has-fill">
     <div class="vc_column-inner">
         <div class="wpb_wrapper">
             <div class="wpb_single_image wpb_content_element vc_align_left">
                 <div class="wpb_wrapper">
-                    <a href="<?php echo $link; ?>" target="_self">
+                    <a href="<?php echo $link['url']; ?>" title="<?php echo $link['title']; ?>" target="<?php echo $link['target']; ?>">
                     	<div class="vc_single_image-wrapper vc_box_border_grey">
-                    		<img width="1920" height="674" src="<?php echo $bild; ?>" class="vc_single_image-img attachment-full" alt="<?php echo $titel; ?>" title="<?php echo $titel; ?>">
+                    		<?php echo wp_get_attachment_image ($bild, 'full'); ?>
                     	</div>
                   	</a>
                 </div>
@@ -44,7 +44,7 @@ function create_mecositebox_shortcode($atts) {
                     <p><?php echo $beschreibung; ?></p>
                 </div>
             </div>
-            <a itemprop="url" href="<?php echo $link; ?>" target="_self" class="qbutton default" title="<?php echo $titel; ?>" style="margin: 0 0 20px 20px; "><?php echo __( 'Mehr erfahren', 'meco-text' ); ?></a>
+            <a href="<?php echo $link['url']; ?>" title="<?php echo $link['title']; ?>" target="<?php echo $link['target']; ?>" class="qbutton default"><?php echo __( 'Mehr erfahren', 'meco-text' ); ?></a>
         </div>
     </div>
 </div>
@@ -68,7 +68,7 @@ function mecositebox_integrateWithVC() {
 				'type' => 'attach_image',
 				'holder' => 'div',
 				'class' => '',
-				'admin_label' => true,
+				'admin_label' => false,
 				'heading' => __( 'Bild', 'meco-text' ),
 				'param_name' => 'bild',
 			),
@@ -76,15 +76,15 @@ function mecositebox_integrateWithVC() {
 				'type' => 'textfield',
 				'holder' => 'div',
 				'class' => '',
-				'admin_label' => true,
+				'admin_label' => false,
 				'heading' => __( 'Titel', 'meco-text' ),
 				'param_name' => 'titel',
 			),
 			array(
-				'type' => 'textarea_html',
+				'type' => 'textarea',
 				'holder' => 'div',
 				'class' => '',
-				'admin_label' => true,
+				'admin_label' => false,
 				'heading' => __( 'Beschreibung', 'meco-text' ),
 				'param_name' => 'beschreibung',
 			),
@@ -92,7 +92,7 @@ function mecositebox_integrateWithVC() {
 				'type' => 'vc_link',
 				'holder' => 'div',
 				'class' => '',
-				'admin_label' => true,
+				'admin_label' => false,
 				'heading' => __( 'Link', 'meco-text' ),
 				'param_name' => 'link',
 			),

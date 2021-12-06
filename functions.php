@@ -2,7 +2,7 @@
 /*
 Plugin Name: MECO Addons
 Description: Fügt einig erweiterungen zur Bridge hinzu.
-Version: 0.0.2
+Version: 0.0.1
 Author: Marcel Kaiser
 Author URI: https://www.meco.de/
 */
